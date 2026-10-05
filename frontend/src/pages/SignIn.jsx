@@ -2,11 +2,29 @@ import { useState } from "react"
 import Button from "../components/Button"
 import Input from "../components/Input"
 import { Link } from "react-router-dom"
+import { api } from "../api/api"
+
 
 const SignIn = () => {
     const [error, setError] = useState("")
 
-    const handleSubmit = () => {}
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setError("")
+    
+        const user = {
+        username: e.target.username.value,
+        password: e.taget.password.value
+    }
+    
+      try {
+      const data = await api.loginUser(user)
+      } catch (error) {
+      setError(error.responese.data.error)
+      console.error(error)
+      }
+     
+}
 
     return (
         <div className="auth-page">
