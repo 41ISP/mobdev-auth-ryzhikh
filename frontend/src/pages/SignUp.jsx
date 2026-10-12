@@ -4,6 +4,8 @@ import Input from "../components/Input"
 import { Link, useNavigate } from "react-router-dom"
 import { api } from "../api/api"
 
+
+
 const SignUp = () => {
     const [error, setError] = useState("")
     const navigate = useNavigate()
@@ -28,8 +30,8 @@ const SignUp = () => {
             setSession(data.data)
             navigate("/")
         } catch (error) {
-            setError(error.response.data.error)
             console.error(error)
+            setError(error.response.data.error)
         }
     }
     return (
